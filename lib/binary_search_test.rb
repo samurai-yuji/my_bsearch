@@ -1,10 +1,14 @@
 
 class Array
-	def my_bsearch(&block)
+	def my_bsearch(debug=false,&block)
 		a=0
 		z=self.size
-		until z-a <= 1 do
+		m=a
+		pm=nil
+		while m != pm do
+			pm = m
 			m=(a+z)/2
+			p "#{a},#{m},#{z}" if debug
 			v = block.call(self[m])
 			if v==0 then
 				return m
